@@ -189,7 +189,7 @@ class transformer_block(nn.Module):
         xres = xres + x
         out = self.mlp(self.norm3(xres))
         out = out + xres
-        return xquery
+        return out
     
 
 class Transformer(nn.Module):
