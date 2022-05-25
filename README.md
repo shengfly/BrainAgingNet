@@ -7,4 +7,4 @@ This will contain the code of our publications about brain age estimation using 
 [`arXiv`](https://arxiv.org/pdf/2109.01663.pdf)
 
 ### Relation-Transformer.py 
-- Sheng He, Yanfang Feng, P.Ellen Grant, Yangming Ou, **Deep Relation Learning for Regression and Its Application to Brain Age Estimation.** IEEE Transactions on Medical Imaging. 
+- Sheng He, Yanfang Feng, P.Ellen Grant, Yangming Ou, **Deep Relation Learning for Regression and Its Application to Brain Age Estimation.** IEEE Transactions on Medical Imaging. [`arXiv`](https://arxiv.org/pdf/2204.06598.pdf)
