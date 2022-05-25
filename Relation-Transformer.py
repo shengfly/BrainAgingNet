@@ -187,9 +187,8 @@ class transformer_block(nn.Module):
         xc = self.norm2(xcontext)
         xres = self.attn(xq,xc)
         xres = xres + x
-        x = xres
-        xres = self.mlp(self.norm3(xres))
-        xres = xres + x
+        out = self.mlp(self.norm3(xres))
+        out = out + xres
         return xquery
     
 
