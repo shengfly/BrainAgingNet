@@ -182,11 +182,14 @@ class transformer_block(nn.Module):
                        drop=drop)
 
     def forward(self,xquery,xcontext):
+        x = xquery
         xq = self.norm1(xquery)
         xc = self.norm2(xcontext)
         xres = self.attn(xq,xc)
-        xq = xq + xres
-        xquery = self.mlp(self.norm3(xres))+xquery
+        xres = xres + x
+        x = xres
+        xres = self.mlp(self.norm3(xres))
+        xres = xres + x
         return xquery
     
 
