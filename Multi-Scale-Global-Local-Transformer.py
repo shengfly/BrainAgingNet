@@ -299,19 +299,23 @@ if __name__ == '__main__':
     # How to generate the salient map (Fig.8 on the paper)
     
     saliency_map = np.zeros(x1.size()[2:])
-    nums_map = np.zeros(x1.size()[2:])
     
     mod.eval()
-    predlist,polist = mod(x1,nPoints=10)
+    nPoints = 40
+    ntopn = 5
     
- 
-    for pred, p in zip(predlist,polist):
-        err = np.abs(pred[0].squeeze(0).detach().cpu().numpy()-gt.cpu().numpy())
-        saliency_map[p[0]:p[0]+p[2],p[1]:p[1]+p[2]] += err
-        nums_map[p[0]:p[0]+p[2],p[1]:p[1]+p[2]] += 1
+    predlist,polist = mod(x1,nPoints=nPoints)
     
-    nums_map[nums_map==0]=1
-    saliency_map /= nums_map
+    # sort the predlist 
+    ridx = np.argsort(predlist)
+    for n in range(ntopn):
+        p = polist[ridx[n]] # select the top n minimum prediction
+        
+        saliency_map[p[0]:p[0]+p[2],p[1]:p[1]+p[2]] += 1
+    
+    saliency_map /= np.max(saliency_map)
+    
+    
     
    
         
